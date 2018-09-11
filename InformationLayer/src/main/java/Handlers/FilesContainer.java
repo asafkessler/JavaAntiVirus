@@ -13,6 +13,7 @@ public class FilesContainer {
 
     /**
      * init list of files from array of files and directories
+     *
      * @param files
      */
     public void init(File[] files) {
@@ -25,16 +26,18 @@ public class FilesContainer {
 
     /**
      * recursive function to add files from dir to list
+     *
      * @param dir
      */
     private void addFiles(File dir) {
-        if(dir.isFile()){
+        if (dir.isFile()) {
             files.add(dir);
-        }
-        else if(dir.isDirectory() && dir.listFiles() != null) {
+        } else if (dir.isDirectory()) {
             File[] files = dir.listFiles();
-            for (File file : files) {
-                addFiles(file);
+            if (files != null) {
+                for (File file : files) {
+                    addFiles(file);
+                }
             }
         }
     }
@@ -42,7 +45,8 @@ public class FilesContainer {
     public List<File> getFiles() {
         return files;
     }
-    public int getNumOfFiles(){
+
+    public int getNumOfFiles() {
         return files.size();
     }
 }
