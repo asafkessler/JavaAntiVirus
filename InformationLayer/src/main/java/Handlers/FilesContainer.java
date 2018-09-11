@@ -1,3 +1,5 @@
+package Handlers;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +36,12 @@ public class FilesContainer {
         for (File file : files){
             addFiles(file);
         }
+    }
+
+    public List<File> getFiles() {
+        return files;
+    }
+    public int getNumOfFiles(){
+        return files.size();
     }
 }
