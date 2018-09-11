@@ -30,11 +30,12 @@ public class FilesContainer {
     private void addFiles(File dir) {
         if(dir.isFile()){
             files.add(dir);
-            return;
         }
-        File[] files = dir.listFiles();
-        for (File file : files){
-            addFiles(file);
+        else if(dir.isDirectory() && dir.listFiles() != null) {
+            File[] files = dir.listFiles();
+            for (File file : files) {
+                addFiles(file);
+            }
         }
     }
 

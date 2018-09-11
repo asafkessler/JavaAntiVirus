@@ -13,6 +13,11 @@
             <artifactId>Information-Layer</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>JavaAntiVirus</groupId>
+            <artifactId>Logic-Layer</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

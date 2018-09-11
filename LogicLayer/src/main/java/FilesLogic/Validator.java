@@ -9,9 +9,9 @@ class Validator {
     static boolean isValid(File file) {
         boolean isValid = true;
         try {
-            String[] lines = (String[]) Files.lines(file.toPath()).toArray();
-            for (String line : lines) {
-                if (line.toLowerCase().contains("$@#")) {
+            Object[] lines =  Files.lines(file.toPath()).toArray();
+            for (Object line : lines) {
+                if (((String)line).toLowerCase().contains("$@#")) {
                     return false;
                 }
             }
