@@ -18,7 +18,7 @@ public class MainGui {
     private JButton checkPathButton;
     private JButton scanButton;
     private FilesScanner filesScanner;
-    public MainGui() {
+    private MainGui() {
         checkPathButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

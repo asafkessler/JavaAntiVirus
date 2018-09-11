@@ -46,7 +46,5 @@ public class FilesContainer {
         return files;
     }
 
-    public int getNumOfFiles() {
-        return files.size();
-    }
+
 }

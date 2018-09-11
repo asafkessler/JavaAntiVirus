@@ -8,15 +8,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public class FilesState {
     private Map<String, Boolean> fileStateMap;
 
-    public FilesState() {
-        this.fileStateMap = new ConcurrentHashMap<String, Boolean>();
+    FilesState() {
+        this.fileStateMap = new ConcurrentHashMap<>();
     }
 
-    public void setFileStatus(String name, boolean isVirus){
+    void setFileStatus(String name, boolean isVirus){
         fileStateMap.put(name,isVirus);
     }
 
-    public Map<String, Boolean> getFileStateMap() {
+    Map<String, Boolean> getFileStateMap() {
         return fileStateMap;
     }
 

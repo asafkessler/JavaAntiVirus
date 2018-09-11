@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class FilesScanner {
     private FilesState state;
@@ -17,13 +16,13 @@ public class FilesScanner {
         this.files = files;
     }
 
-    public void scan(int threadNum){
+    public void scan(int threadNum) {
         state.getFileStateMap().clear();
         long scanStartTime = System.currentTimeMillis();
         if (threadNum == 0) {
             return;
         }
-        if (threadNum > files.size()){
+        if (threadNum > files.size()) {
             threadNum = files.size();
         }
 
@@ -31,17 +30,17 @@ public class FilesScanner {
         files.forEach(file -> {
             executorService.submit(new FileRunnable(file));
         });
-        while(!isFinished()){
+        while (!isFinished()) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        lastScanTime =  System.currentTimeMillis() - scanStartTime;
+        lastScanTime = System.currentTimeMillis() - scanStartTime;
     }
 
-    public boolean isFinished() {
+    private boolean isFinished() {
         return state.getFileStateMap().keySet().size() == files.size();
     }
 
@@ -56,7 +55,7 @@ public class FilesScanner {
     class FileRunnable implements Runnable {
         private File file;
 
-        public FileRunnable(File file) {
+        FileRunnable(File file) {
             this.file = file;
         }
 
