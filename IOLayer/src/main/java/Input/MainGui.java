@@ -30,11 +30,12 @@ public class MainGui {
                     totalFilesField.setText(String.valueOf(files.length));
                     container.init(files);
                     filesScanner = new FilesScanner(container.getFiles());
+                    totalFilesField.setDisabledTextColor(Color.GREEN);
                 }
                 else {
-                    totalFilesField.setText("Bad Path");
+                    totalFilesField.setText("err");
+                    totalFilesField.setDisabledTextColor(Color.RED);
                 }
-                totalFilesField.setDisabledTextColor(Color.BLACK);
 
             }
         });
@@ -44,9 +45,11 @@ public class MainGui {
                 if (filesScanner != null){
                     filesScanner.scan((Integer) threadSpinner.getValue());
 
+                    int size = filesScanner.getState().getFalseFiles().size();
+
                     resultField.setText("Total time: "+filesScanner.getLastScanTime()+" | "+
-                            "Number Of Invalid Files: "+filesScanner.getState().getFalseFiles().size());
-                    resultField.setDisabledTextColor(Color.RED);
+                            "Number Of Invalid Files: "+ size);
+                    resultField.setDisabledTextColor(size == 0 ? Color.GREEN : Color.RED);
                 }
             }
         });
