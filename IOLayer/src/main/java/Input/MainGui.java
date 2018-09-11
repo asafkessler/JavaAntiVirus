@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.List;
 
 public class MainGui {
     private JPanel panel1;
@@ -27,9 +28,10 @@ public class MainGui {
                     FileFetcher fileFetcher = new FileFetcher(dir);
                     FilesContainer container = new FilesContainer();
                     File[] files = fileFetcher.getFilesTree();
-                    totalFilesField.setText(String.valueOf(files.length));
                     container.init(files);
-                    filesScanner = new FilesScanner(container.getFiles());
+                    List<File> allFiles = container.getFiles();
+                    totalFilesField.setText(String.valueOf(allFiles.size()));
+                    filesScanner = new FilesScanner(allFiles);
                     totalFilesField.setDisabledTextColor(Color.GREEN);
                 }
                 else {
