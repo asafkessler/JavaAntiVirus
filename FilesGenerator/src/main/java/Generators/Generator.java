@@ -1,3 +1,5 @@
+package Generators;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -15,8 +17,9 @@ public class Generator {
         final int numberOfFiles = 10000;
         final int numberOfFalseFiles = 3141;
         final int everyWhatFolder = 50;
+//        200 folders overall
         final String pattern = "$@#";
-         StringBuilder targetPath = new StringBuilder("C:\\devl\\work\\Hackend\\JavaFiles\\");
+         StringBuilder targetPath = new StringBuilder("C:\\");
         final int linesPerFile = 100;
         final int charsPerLine = 50;
         Set<Integer> randomIndexes = new HashSet<>();
