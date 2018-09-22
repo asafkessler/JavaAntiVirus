@@ -53,7 +53,7 @@ public class MainGui {
 
                     int size = filesScanner.getState().getFalseFiles().size();
 
-                    resultField.setText("Total time: " + filesScanner.getLastScanTime() + "ms | " +
+                    resultField.setText("Total time: " + filesScanner.getLastScanTime() + " | " +
                             "Number Of Invalid Files: " + size);
                     resultField.setDisabledTextColor(size == 0 ? Color.GREEN : Color.RED);
                 }
@@ -74,7 +74,7 @@ public class MainGui {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("MainGui");
+        JFrame frame = new JFrame("AntiVirus");
         frame.setContentPane(new MainGui().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
