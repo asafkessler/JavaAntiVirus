@@ -1,6 +1,7 @@
 package Input;
 
 import FilesLogic.FilesScanner;
+import FilesLogic.FilesState;
 import Handlers.FilesContainer;
 
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class MainGui {
     private JTextField resultField;
     private JButton checkPathButton;
     private JButton scanButton;
+    private JButton FIXButton;
     private FilesScanner filesScanner;
     private MainGui() {
         checkPathButton.addActionListener(new ActionListener() {
@@ -52,6 +54,18 @@ public class MainGui {
                     resultField.setText("Total time: "+filesScanner.getLastScanTime()+" | "+
                             "Number Of Invalid Files: "+ size);
                     resultField.setDisabledTextColor(size == 0 ? Color.GREEN : Color.RED);
+                }
+            }
+        });
+        FIXButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (filesScanner != null){
+                    FilesState state = filesScanner.getState();
+                    int numberOfFiles = state.getFalseFiles().size();
+                    int remain = state.clearFalseFiles();
+                    resultField.setText("Removed: "+(numberOfFiles-remain)+" out of: "+numberOfFiles+" viruses");
+                    resultField.setDisabledTextColor(remain == 0 ? Color.GREEN : Color.RED);
                 }
             }
         });

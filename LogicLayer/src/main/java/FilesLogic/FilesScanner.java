@@ -62,7 +62,7 @@ public class FilesScanner {
         @Override
         public void run() {
             boolean isFileValid = Validator.isValid(file);
-            state.setFileStatus(file.getName(), isFileValid);
+            state.setFileStatus(file, isFileValid);
         }
     }
 }
