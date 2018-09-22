@@ -53,7 +53,7 @@ public class MainGui {
 
                     int size = filesScanner.getState().getFalseFiles().size();
 
-                    resultField.setText("Total time: " + filesScanner.getLastScanTime() + " | " +
+                    resultField.setText("Total time: " + filesScanner.getLastScanTime() + "ms | " +
                             "Number Of Invalid Files: " + size);
                     resultField.setDisabledTextColor(size == 0 ? Color.GREEN : Color.RED);
                 }
