@@ -21,7 +21,10 @@ public class MainGui {
     private JButton scanButton;
     private JButton FIXButton;
     private FilesScanner filesScanner;
+
     private MainGui() {
+        threadSpinner.setModel(new SpinnerNumberModel(1, 1, 10000, 1));
+
         checkPathButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,8 +38,7 @@ public class MainGui {
                     totalFilesField.setText(String.valueOf(allFiles.size()));
                     filesScanner = new FilesScanner(allFiles);
                     totalFilesField.setDisabledTextColor(Color.GREEN);
-                }
-                else {
+                } else {
                     totalFilesField.setText("err");
                     totalFilesField.setDisabledTextColor(Color.RED);
                 }
@@ -46,13 +48,13 @@ public class MainGui {
         scanButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (filesScanner != null){
+                if (filesScanner != null) {
                     filesScanner.scan((Integer) threadSpinner.getValue());
 
                     int size = filesScanner.getState().getFalseFiles().size();
 
-                    resultField.setText("Total time: "+filesScanner.getLastScanTime()+" | "+
-                            "Number Of Invalid Files: "+ size);
+                    resultField.setText("Total time: " + filesScanner.getLastScanTime() + " | " +
+                            "Number Of Invalid Files: " + size);
                     resultField.setDisabledTextColor(size == 0 ? Color.GREEN : Color.RED);
                 }
             }
@@ -60,11 +62,11 @@ public class MainGui {
         FIXButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (filesScanner != null){
+                if (filesScanner != null) {
                     FilesState state = filesScanner.getState();
                     int numberOfFiles = state.getFalseFiles().size();
                     int remain = state.clearFalseFiles();
-                    resultField.setText("Removed: "+(numberOfFiles-remain)+" out of: "+numberOfFiles+" viruses");
+                    resultField.setText("Removed: " + (numberOfFiles - remain) + " out of: " + numberOfFiles + " viruses");
                     resultField.setDisabledTextColor(remain == 0 ? Color.GREEN : Color.RED);
                 }
             }
@@ -77,6 +79,7 @@ public class MainGui {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.getContentPane().setBackground(Color.DARK_GRAY);
 
 
     }
