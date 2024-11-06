@@ -80,7 +80,5 @@ public class MainGui {
         frame.pack();
         frame.setVisible(true);
         frame.getContentPane().setBackground(Color.DARK_GRAY);
-
-
     }
 }
